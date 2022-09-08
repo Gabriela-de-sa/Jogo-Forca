@@ -1,0 +1,78 @@
+import random
+
+def inicia_jogo():
+    print("*********************************")
+    print("***Bem vindo ao jogo da Forca!***")
+    print("*********************************")
+
+def sortear_palavra():
+    animal = ['baleia', 'peixe', 'cachorro', 'gato', 'cavalo', 'cobra', 'elefante',
+                'galinha', 'golfinho', 'leao', 'lobo', 'macaco']
+    comida = ['pizza', 'bolo', 'bolacha', 'arroz', 'pudim', 'chocolate', 'coxinha']
+    pais = ['brasil', 'franca', 'alemanha', 'italia', 'coreia', 'japao', 'australia']
+
+    categoria = input('categoria: animal, comida, pais: ')
+
+    if categoria == 'animal':
+        palavra_sorteada = random.choice(animal)
+    if categoria == 'comida':
+        palavra_sorteada = random.choice(comida)
+    if categoria == 'pais':
+        palavra_sorteada = random.choice(pais)
+    
+    palavra_sorteada = list(palavra_sorteada)
+    print('Muito bem, palavra sorteada... vamos comecar!!!')
+    return palavra_sorteada
+
+def letras_acertadas(palavra_sorteada):
+    return ['_' for i in palavra_sorteada]
+
+def pede_chute():
+    chute = input('chute: ').strip().lower()
+    return chute
+
+def jogar():
+    inicia_jogo()
+    palavra_secreta = sortear_palavra()
+    acertadas = letras_acertadas(palavra_secreta)
+
+    continuar = 'sim'.upper()
+    acertou = False
+    enforcou = False
+    erro = 0
+    letras_faltando = len(acertadas) #mostra o quanto falta para completar "-"
+    print(palavra_secreta)
+
+    while not acertou and not enforcou:
+        print('-*'*30)
+        print(acertadas)
+        chute = pede_chute()
+
+        if chute not in palavra_secreta:
+            erro +=1
+            print(f'Faltam {erro - 7} tentativas de erro para ser enforcado!!')
+        else:
+            index = 0
+            for letra in palavra_secreta:
+                if (chute == letra):
+                    acertadas[index] = letra 
+                index += 1
+                
+                               
+        enforcou = erro == 7
+        acertou = '_' not in acertadas
+        letras_faltando = str(acertadas.count('_'))
+        
+    if letras_faltando == "0":
+        print('parabens, voce ganhou')
+        continuar = input("Deseja jogar novamente? ").lower()
+        if continuar == 'sim': 
+            jogar()
+        else:
+            print('jogo encerrado')
+
+if __name__ == '__main__':
+    jogar()       
+
+
+
