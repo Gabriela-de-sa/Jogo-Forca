@@ -36,7 +36,6 @@ def jogar():
     palavra_secreta = sortear_palavra()
     acertadas = letras_acertadas(palavra_secreta)
 
-    continuar = 'sim'.upper()
     acertou = False
     enforcou = False
     erro = 0
