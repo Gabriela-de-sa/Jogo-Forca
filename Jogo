@@ -38,8 +38,9 @@ def acertou_chute(chute, palavra_secreta, acertadas):
             acertadas[index] = letra 
         index += 1
 
-def perdeu():
+def perdeu(palavra_secreta):
     print("Voce perdeu!!!!")
+    print('A palvra secreta era', *palavra_secreta )
     continuar = input("Deseja jogar novamente? [s/n] ").strip().lower()[0]
     if continuar == 's': 
         jogar()
@@ -75,16 +76,18 @@ def jogar():
         else:
             erro +=1
             print(f'Faltam {erro - 7} tentativas de erro para ser enforcado!!')
-                                         
+          
+                               
         enforcou = erro == 7
         acertou = '_' not in acertadas
         letras_faltando = str(acertadas.count('_'))
     
     if erro == 7:
-        perdeu()
+        perdeu(palavra_secreta)
     if letras_faltando == "0":
         ganhou() 
         
 
 if __name__ == '__main__':
     jogar()       
+   
