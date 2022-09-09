@@ -60,17 +60,22 @@ def jogar():
         enforcou = erro == 7
         acertou = '_' not in acertadas
         letras_faltando = str(acertadas.count('_'))
+    
+    if erro == 7:
+        print("Voce perdeu!!!!")
+        continuar = input("Deseja jogar novamente? [s/n] ").lower()[0]
+        if continuar == 's': 
+            jogar()
+        else:
+            print('jogo encerrado')
         
     if letras_faltando == "0":
-        print('parabens, voce ganhou')
-        continuar = input("Deseja jogar novamente? ").lower()
-        if continuar == 'sim': 
+        print('parabens, voce ganhou!!!')
+        continuar = input("Deseja jogar novamente? [s/n] ").lower()[0]
+        if continuar == 's': 
             jogar()
         else:
             print('jogo encerrado')
 
 if __name__ == '__main__':
-    jogar()       
-
-
-
+    jogar()      
