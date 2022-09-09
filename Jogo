@@ -40,7 +40,6 @@ def jogar():
     enforcou = False
     erro = 0
     letras_faltando = len(acertadas) #mostra o quanto falta para completar "-"
-    print(palavra_secreta)
 
     while not acertou and not enforcou:
         print('-*'*30)
