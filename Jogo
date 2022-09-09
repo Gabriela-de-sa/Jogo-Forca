@@ -63,7 +63,7 @@ def jogar():
     
     if erro == 7:
         print("Voce perdeu!!!!")
-        continuar = input("Deseja jogar novamente? [s/n] ").lower()[0]
+        continuar = input("Deseja jogar novamente? [s/n] ").strip().lower()[0]
         if continuar == 's': 
             jogar()
         else:
@@ -71,7 +71,7 @@ def jogar():
         
     if letras_faltando == "0":
         print('parabens, voce ganhou!!!')
-        continuar = input("Deseja jogar novamente? [s/n] ").lower()[0]
+        continuar = input("Deseja jogar novamente? [s/n] ").strip().lower()[0]
         if continuar == 's': 
             jogar()
         else:
